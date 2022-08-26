@@ -28,4 +28,21 @@ class LoginHandler {
         }
         return false;
     }
+    public function emailExists($email){
+        $user = User::select()->where('email', $email)->one();
+        return $user ? true : false;
+    }
+    public function addUser($name, $email, $password, $birthdate){
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $token = md5(time().rand(0, 9999).time());
+
+        User::insert([
+            'email' => $email,
+            'password' => $hash,
+            'birthdate' => $birthdate,
+            
+            'token' => $token
+        ])->execute();
+        return $token;
+    }
 }
