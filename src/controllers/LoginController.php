@@ -51,7 +51,7 @@ class LoginController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, 'password');
         $birthdate = filter_input(INPUT_POST, 'birthdate');
-        if($name && $email && $password){
+        if($name && $email && $password && $birthdate){
             $birthdate = explode('/', $birthdate);
             if(count($birthdate) != 3){
                 $_SESSION['flash'] = 'Data de nascimento inválida';
@@ -76,4 +76,4 @@ class LoginController extends Controller {
 
     }
 
-}
+}     

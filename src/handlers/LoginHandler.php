@@ -40,7 +40,6 @@ class LoginHandler {
             'email' => $email,
             'password' => $hash,
             'birthdate' => $birthdate,
-            
             'token' => $token
         ])->execute();
         return $token;
